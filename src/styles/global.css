@@ -1,1 +1,16 @@
 /* Globale styles her */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --logo-font-primary: "Cabin", sans-serif;
+  --p-font-primary: "Lato", sans-serif;
+  --primary-color: #fff;
+  --secondary-color: #181818;
+  --tertiary-color: #f5f5f5;
+  --quaternary-color: #ebebeb;
+  --accent-color: #fbc336;
+}

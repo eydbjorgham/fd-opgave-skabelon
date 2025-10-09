@@ -1,5 +1,7 @@
 ---
 import "@styles/main.css";
+import Header from "@layouts/Header.astro";
+import Footer from "@layouts/Footer.astro";
 ---
 
 <html lang="en">
@@ -7,6 +9,12 @@ import "@styles/main.css";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
     <meta name="generator" content={Astro.generator} />
     <title>DIN TITEL HER. MÅSKE SOM PROP?</title>
     <style is:inline>
@@ -14,8 +22,23 @@ import "@styles/main.css";
     </style>
   </head>
   <body>
+    <Header />
+    <Footer />
     <slot />
   </body>
 </html>
 
-<style></style>
+<style>
+  @layer component {
+    body {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: [full-start] 1fr [center-start] minmax(0, 1200px) [content-end] 1fr [full-end];
+      align-items: start;
+
+      > * {
+        grid-column: content-start / content-end;
+      }
+    }
+  }
+</style>
