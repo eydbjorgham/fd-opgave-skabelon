@@ -1,0 +1,140 @@
+---
+import valuesData from "@data/coreValues.json"; // hent JSON-filen
+
+// Du kan evt. tjekke data med:
+// console.log(valuesData);
+---
+
+    <article>
+      <div class="values-content">
+        <h3>Growing with out clients</h3>
+        <h2>Our core values & principles</h2>
+        <p>Capitalize on low hanging fruit to identify a ballpark value added activity beta test. <br> Override the digital divide with additional from DevOps.</p>
+        <a href="#">Get in touch</a>
+      </div>
+      <ul class="values-data">
+        {valuesData.values.map((value) => (
+            <li class="value-card">
+            <div class="icon">
+              <!-- du kan senere erstatte dette med et faktisk ikon-component -->
+              <span>{value.icon}</span>
+              </div>
+              <h4>{value.title}</h4>
+              <p>{value.description}</p>
+              <a href={value.link.url}>{value.link.text}</a>
+            </li>
+              
+        ))}
+      </ul>
+    </article>
+
+
+
+<style>
+    @layer components {
+        article {
+            display: grid;
+            grid-column: full-start / full-end;
+            grid-template-rows: 1fr 1fr;
+            background-color: var(--secondary-color);
+
+            h3 {
+                font-family: var(--text-font);
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 147.5%; /* 23.6px */
+                letter-spacing: 2.32px;
+                text-transform: uppercase;
+            }
+
+            h2 {
+                font-family: var(--heading-font);
+                font-size: 45px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 116%; /* 52.2px */
+            }
+
+            p {
+                font-family: var(--text-font);
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 147.5%; /* 23.6px */
+            }
+
+            a {
+                font-family: var(--text-font);
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 160%; /* 28.8px */
+            }
+        }
+
+        .values-content {
+            display: flex;
+            flex-direction: column;
+            padding-left: var(--padding-luft);
+            padding-right: var(--padding-luft);
+            color: var(--primary-color);
+            gap: 2rem;
+            margin-top: 7rem;
+
+            a {
+                place-self: flex-end;
+                padding: 0.6rem 1.4rem;
+                border-radius: 42px;
+                background: var(--primary-color);
+                text-decoration: none;
+            }
+        }
+
+        ul.values-data {
+            list-style: none;
+            margin: 2rem var(--padding-luft) 0rem;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 28px;
+
+            > * {
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                border-radius: 16px;
+                padding: 28px;
+                box-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 12px 28px rgba(0,0,0,0.10);
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                min-height: 300px;            /* giver ens højde, justér efter behov */
+                
+                h4 {
+                    font-family: var(--heading-font);
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 116%; /* 23.2px */
+                }
+                
+                p {
+                    color: #595566;
+                }
+                
+                a {
+                    color: var(--secondary-color);
+                    font-family: var(--text-font);
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 160%; /* 28.8px */
+                    text-decoration: none;
+                    margin-top: auto;             /* skub linket ned til bunden */
+                }
+        }
+        
+        }
+        }
+    
+</style>

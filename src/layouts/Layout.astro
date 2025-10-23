@@ -1,7 +1,6 @@
 ---
 import "@styles/main.css";
 import Header from "@layouts/Header.astro";
-import Footer from "@layouts/Footer.astro";
 ---
 
 <html lang="en">
@@ -23,22 +22,11 @@ import Footer from "@layouts/Footer.astro";
   </head>
   <body>
     <Header />
-    <Footer />
     <slot />
   </body>
 </html>
 
 <style>
-  @layer component {
-    body {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      grid-template-columns: [full-start] 1fr [center-start] minmax(0, 1200px) [content-end] 1fr [full-end];
-      align-items: start;
-
-      > * {
-        grid-column: content-start / content-end;
-      }
-    }
+  @layer components {
   }
 </style>

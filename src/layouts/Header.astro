@@ -5,20 +5,23 @@ import Button from "@components/Button.astro";
 
 <header>
   <nav>
-    <div class="inner-header">
-      <div class="logo">
-        <a href="index.astro">AskExperts</a>
-      </div>
-      <div class="nav">
-        <ul>
-          <li><a href="index.astro">Home</a></li>
-          <li><a href="case.astro">Case study</a></li>
-          <li><a href="team.astro">Team</a></li>
-          <li><a href="about.astro">About</a></li>
-        </ul>
-      </div>
-      <Button />
+    <div class="logo">
+      <a href="index.astro">AskExperts</a>
     </div>
+    <div class="nav">
+      <ul>
+        <li><a href="index.astro">Home</a></li>
+        <li><a href="case.astro">Case study</a></li>
+        <li><a href="team.astro">Team</a></li>
+        <li><a href="about.astro">About</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <Button />
   </nav>
 </header>
 
@@ -27,6 +30,10 @@ import Button from "@components/Button.astro";
     header {
       display: grid;
       grid-column: full;
+      grid-template-columns: subgrid;
+      padding: 38px;
+      background-color: rgba(27, 27, 27, 0.91);
+      backdrop-filter: blur(10.5px);
     }
 
     nav {
@@ -35,10 +42,8 @@ import Button from "@components/Button.astro";
       justify-content: space-between;
       align-items: center;
       /* width: 1920px; */
-      padding: 38px;
-      background-color: rgba(27, 27, 27, 0.91);
       gap: 1rem;
-      flex: 1;
+      flex-shrink: 0;
 
       ul {
         display: flex;
@@ -46,12 +51,12 @@ import Button from "@components/Button.astro";
         align-items: center;
         gap: 30px;
         list-style: none;
-        font-family: var(--p-font-primary);
+        font-family: var(--text-font);
       }
     }
 
     .logo {
-      font-family: var(--logo-font-primary);
+      font-family: var(--heading-font);
       font-size: 1.5rem;
       font-weight: bold;
     }

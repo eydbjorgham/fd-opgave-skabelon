@@ -2,12 +2,22 @@
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/Hero.astro";
 import DynamicImage from "@components/helpers/DynamicImage.astro";
-import employees from "@data/employees.json";
+// import employees from "@data/employees.json";
+import Expect from "@components/Expect.astro";
+import Financial from "@components/Financial.astro";
+import Experience from "@components/Experience.astro";
+import Values from "@components/Values.astro";
+import Footer from "@layouts/Footer.astro";
 
-console.log(employees);
+// console.log(employees);
 ---
 
 <Layout>
   <Hero />
-  {employees.map((employee) => <DynamicImage imagePath={employee.img} altText={employee.name} width={200} height={200} />)}
+  <!-- {employees.map((employee) => <DynamicImage imagePath={employee.img} altText={employee.name} width={200} height={200} />)} -->
+  <Expect />
+  <Financial />
+  <Experience />
+  <Values />
+  <Footer />
 </Layout>

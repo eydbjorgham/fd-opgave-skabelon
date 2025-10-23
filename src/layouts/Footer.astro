@@ -12,15 +12,22 @@
 
 <style>
   footer {
-    display: flex;
+    display: grid;
+    grid-column: full;
+    grid-template-columns: subgrid;
     /* width: 1920px; */
     padding: 46px 0;
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     gap: 10px;
     background-color: #181818;
     color: var(--primary-color);
+    justify-items: center;
+
+    > * {
+      grid-column: content;
+    }
   }
 
   .logo a {

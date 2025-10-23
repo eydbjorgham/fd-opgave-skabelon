@@ -6,11 +6,42 @@
 }
 
 :root {
-  --logo-font-primary: "Cabin", sans-serif;
-  --p-font-primary: "Lato", sans-serif;
+  /* Font */
+  --heading-font: "Cabin", sans-serif;
+  --text-font: "Lato", sans-serif;
+
+  /* Colors */
   --primary-color: #fff;
   --secondary-color: #181818;
   --tertiary-color: #f5f5f5;
   --quaternary-color: #ebebeb;
   --accent-color: #fbc336;
+
+  /* Margin */
+  --header-margin: 1.5rem;
+  --text-margin: 1.2rem;
+  --text-padding: 0.5rem;
+  --heading-padding: 1.2rem;
+
+  /* Padding */
+  --padding-luft: 2.5rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: subgrid;
+  > * {
+    grid-column: full;
+  }
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: [full-start] 1fr [content-start] minmax(0, 600px) [hero-start] minmax(0, 600px) [content-end] 1fr [hero-end full-end];
+  align-items: start;
+
+  > * {
+    grid-column: content;
+  }
 }

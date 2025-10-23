@@ -1,0 +1,166 @@
+---
+import financialProjections from "@data/financialProjections.json";
+import Section from "@layouts/Section.astro";
+
+// Tillad både { projections: [...] } eller bare [...]
+const financial = Array.isArray(financialProjections) ? financialProjections : financialProjections.projections || [];
+
+// Hvilket kort skal fremhæves (0-indekseret). Dit mockup fremhæver #2.
+const activeIndex = 1;
+---
+
+<Section>
+  <article class="financial">
+    <header class="financial__header">
+      <div class="financial__intro">
+        <h1>Financial Projections</h1>
+        <p>Financial projections are essential for planning and monitoring a company’s performance. They provide insights into potential revenue, expenses, and profitability over specific periods.</p>
+      </div>
+
+      <div class="financial__controls" aria-hidden="false">
+        <button class="ctrl ctrl--prev" aria-label="Previous">
+          <!-- venstre pil -->
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <button class="ctrl ctrl--next" aria-label="Next">
+          <!-- højre pil -->
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <ul class="cards" role="list">
+      {
+        financialProjections.values.map((financial) => (
+          <li class="card">
+            <h2>{financial.title}</h2>
+            <p>{financial.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
+</Section>
+
+<style>
+  /* Container */
+  .financial {
+    /* justér til dit sites grid/container */
+    max-width: 1120px;
+    margin-inline: auto;
+    padding: 56px 16px 72px;
+  }
+
+  /* Header (titel+tekst til venstre, knapper til højre) */
+  .financial__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .financial__intro h1 {
+    font-size: clamp(28px, 3vw, 36px);
+    line-height: 1.2;
+    margin: 0 0 10px;
+    font-weight: 800;
+  }
+
+  .financial__intro p {
+    max-width: 680px;
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* Knapperne */
+  .financial__controls {
+    display: flex;
+    gap: 14px;
+    margin-top: 6px; /* så de står nogenlunde i linje med overskriften */
+  }
+
+  .ctrl {
+    inline-size: 44px;
+    block-size: 44px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+  }
+  .ctrl--prev {
+    background: #101010;
+    color: #fff;
+  }
+  .ctrl--next {
+    background: #f2c23b; /* din gule accent */
+    color: #101010;
+  }
+
+  /* Kort-grid */
+  .cards {
+    list-style: none;
+    padding: 0;
+    margin: 36px 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .card {
+    padding: 22px 22px 24px;
+    border-radius: 16px;
+    background: #efefef; /* lyse kort */
+    color: #111;
+    box-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    min-height: 170px;
+  }
+
+  .card.is-active {
+    background: #151515; /* aktivt mørkt kort */
+    color: #fff;
+  }
+
+  .card__icon {
+    inline-size: 44px;
+    block-size: 44px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .card.is-active .card__icon {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .card__icon img,
+  .card__icon svg {
+    display: block;
+  }
+
+  .card__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  .card__desc {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.9;
+  }
+</style>
