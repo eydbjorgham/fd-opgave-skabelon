@@ -5,7 +5,6 @@ import Section from "@layouts/Section.astro";
 // Tillad både { projections: [...] } eller bare [...]
 const financial = Array.isArray(financialProjections) ? financialProjections : financialProjections.projections || [];
 
-// Hvilket kort skal fremhæves (0-indekseret). Dit mockup fremhæver #2.
 const activeIndex = 1;
 ---
 
@@ -101,7 +100,7 @@ const activeIndex = 1;
     color: #fff;
   }
   .ctrl--next {
-    background: #f2c23b; /* din gule accent */
+    background: #f2c23b;
     color: #101010;
   }
 
